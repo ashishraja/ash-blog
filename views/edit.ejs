@@ -1,0 +1,17 @@
+<%- include("partials/header") -%>
+ <div style="min-height:74.2vh;">
+  <h1>Edit Article</h1>
+  <form style="padding-top:20px;" action="/edit/<%= post.id %>" method="post">
+    <div class="form-group">
+      <label for="">Title</label><br>
+      <input required class="form-control" type="text" name="updatedTitle" value="<%= post.title %>"><br>
+      <label for="">Description</label><br>
+      <textarea required class="form-control" name="updatedDescription" rows="3" cols="80"><%= post.description %>"</textarea><br>
+      <label for="">Markdown</label><br>
+      <textarea required class="form-control" name="updatedMarkdown" rows="5" cols="80"><%= post.markdown %>"</textarea><br>
+      <button class="btn btn-primary" type="submit" name="button">Edit Article</button>
+    </div>
+  </form>
+ </div>
+
+<%- include("partials/footer") -%>

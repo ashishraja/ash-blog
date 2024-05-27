@@ -1,0 +1,31 @@
+<%- include("partials/header") -%>
+
+  <h1>Home</h1>
+  <p style="margin-bottom:20px;">
+    <%= home%>
+  </p>
+  <a class="create" style="text-decoration: none;" href="/compose">Create Article</a>
+  <div class="all-articles">
+  <% posts.forEach(function(post){ %>
+      <div class="article-div">
+        <h1>
+          <%=post.title%>
+        </h1>
+        <p>Created At : <%= post.createdAt.toLocaleString("en-GB" , { year:"numeric" , day:"numeric" , month : "numeric"
+            }) %>
+        </p>
+        <p>
+          <%= post.description %>
+        </p>
+        <div style="display: flex;">
+          <a class="read" style="text-decoration: none;" href="/posts/<%=post.title%>">Read More</a>
+          <a class="read"  style="text-decoration: none; background-color:#5bc0de" href="/edit/<%=post.id%>"> Edit Article </a>
+          <form action="/delete" method="post">
+            <button type="submit" class="read" style="background-color:#d9534f" name="delete" value="<%= post.id %>" onChange="this.form.submit()">Delete Article</button>
+          </form>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+
+  <%- include("partials/footer") -%>
